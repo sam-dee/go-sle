@@ -28,7 +28,6 @@ def plot_performance_by_size(data):
     plt.show()
 
 
-# Main function
 def main():
 #     filename = "benchmarks_backup.csv"
     filename = "benchmarks.csv"
@@ -38,7 +37,6 @@ def main():
         logging.exception(f'Unable to load file {filename}!')
     else:
         print(data.head())
-        # Visualize performance by matrix size
         plot_performance_by_size(data)
 
 
