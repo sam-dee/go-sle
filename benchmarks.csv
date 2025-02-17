@@ -1,0 +1,17 @@
+Solver,DataType,Size,TimePerOperation
+GaussMethodSync,random,2,1.0843e-05
+GaussMethodSync,random,4,1.1273e-05
+GaussMethodSync,random,6,1.1973e-05
+GaussMethodSync,random,8,1.304e-05
+GaussMethodParallel,random,2,1.1975e-05
+GaussMethodParallel,random,4,1.381e-05
+GaussMethodParallel,random,6,1.7286e-05
+GaussMethodParallel,random,8,2.1119e-05
+CramerMethodSync,random,2,1.1189e-05
+CramerMethodSync,random,4,2.0393e-05
+CramerMethodSync,random,6,0.000422329
+CramerMethodSync,random,8,0.03018913
+CramerMethodParallel,random,2,1.2371e-05
+CramerMethodParallel,random,4,2.4621e-05
+CramerMethodParallel,random,6,0.000264057
+CramerMethodParallel,random,8,0.017344394

@@ -1,0 +1,35 @@
+package solvers
+
+import (
+	"errors"
+	"math"
+	"sle_solver/utils"
+	"sync"
+)
+
+type CramerMethodParallel struct{}
+
+func (c *CramerMethodParallel) Solve(matrix utils.Matrix, constants utils.Matrix) (utils.Matrix, error) {
+	rows, _ := matrix.Size()
+	detA := utils.Det(matrix)
+	if math.Abs(detA) < 1e-10 {
+		return nil, errors.New("matrix is singular and the system is not solvable")
+	}
+
+	solution := utils.NewDenseMatrix(rows, 1)
+	var wg sync.WaitGroup
+	for i := 0; i < rows; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			modifiedMatrix := matrix.Copy()
+			for j := 0; j < rows; j++ {
+				modifiedMatrix.Set(j, i, constants.Get(j, 0))
+			}
+			detModified := utils.Det(modifiedMatrix)
+			solution.Set(i, 0, detModified/detA)
+		}(i)
+	}
+	wg.Wait()
+	return solution, nil
+}
